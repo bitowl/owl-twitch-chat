@@ -27,7 +27,8 @@
         "title": "Twitch Chat",
         "width": 2,
         "file": "twitch-chat.html",
-        "headerColor": "#9f9bbd"
+        "headerColor": "#4b367c",
+	"workspace": "Stream"
       }
     ]
   },

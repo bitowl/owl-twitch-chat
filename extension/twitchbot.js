@@ -4,13 +4,13 @@ const TwitchBot = require('twitch-bot');
 
 module.exports = function (nodecg) {
     const Bot = new TwitchBot({
-        username: nodecg.bundleConfig['bot-username'],
-        oauth: nodecg.bundleConfig['bot-oauth'],
-        channels: [nodecg.bundleConfig['bot-channel']]
+        username: nodecg.bundleConfig.bot_username,
+        oauth: nodecg.bundleConfig.bot_oauth,
+        channels: [nodecg.bundleConfig.channel]
     });
     
     Bot.on('join', () => {
-        nodecg.log.info('Joined channel');
+        nodecg.log.info('Joined channel #' + nodecg.bundleConfig.channel);
         Bot.on('message', chatter => {
             nodecg.sendMessage('chat-message', chatter);
             nodecg.log.info('Received message' , chatter);
