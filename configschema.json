@@ -12,6 +12,11 @@
         "channel": {
             "type": "string",
             "description": "The channel the bot should join to retrieve chat messages"
+        },
+        "messagesCount": {
+            "type": "number",
+            "default": 10,
+            "description": "The number of messages stored"
         }
     },
     "required": [

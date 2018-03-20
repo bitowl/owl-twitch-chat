@@ -1,4 +1,5 @@
-<link rel="import" href="../../../../../bower_components/paper-button/paper-button.html">
+<link rel="import" href="../../../bower_components/paper-button/paper-button.html">
+<link rel="import" href="../../../bower_components/nodecg-replicant/nodecg-replicant.html">
 <dom-module id="owl-twitch-messages">
 	<template>
 		<style>
@@ -11,9 +12,16 @@
             .message {
                 border-bottom: 1px solid #666;
             }
-		</style>
+        </style>
         <div id="messages">
+            <template is="dom-repeat" items="[[messages]]">
+                <div class="message">
+                    <div class="name">[[item.username]]</div>
+                    <div class="message">[[item.message]]</div>
+                </div>
+            </template>
         </div>
+        <paper-button on-tap="addMessage">Test message</paper-button>
 	</template>
 
 	<script src="owl-twitch-messages.js"></script>

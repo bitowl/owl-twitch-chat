@@ -7,16 +7,30 @@
         }
 
         ready() {
+            console.log(nodecg.bundleConfig.messagesCount);
             super.ready();
-            console.log("wtf");
-            var messagesDiv = this.$.messages;
-            nodecg.listenFor('chat-message', message => {
-                messagesDiv.innerHTML = "<div class='message'><div class='name'>" 
-                + message.username + "</div><div class='text'>" 
-                + message.message + "</div></div>" + messagesDiv.innerHTML;
+            this.messages = [
+                {
+                    'username': 'system',
+                    'message': 'no messages yet loaded'
+                }
+            ];
+            nodecg.readReplicant('chat-messages', value => { // Read old messages once
+                this.messages = value;
+            });
+            nodecg.listenFor('message', value => {
+                this.unshift('messages', value);
+                if (this.messages.length > nodecg.bundleConfig.messagesCount) {
+                    this.pop('messages');
+                }
+            });
+        }
 
-                            
-                console.log(message);
+        addMessage() {
+            
+            this.unshift('messages', {
+                'username': 'test',
+                'message': 'testestestsetsetsets'
             });
         }
     }
