@@ -1,5 +1,7 @@
 'use strict';
 
-module.exports = function (nodecg) {
+const twitchBot = require('./twitchbot');
 
+module.exports = function (nodecg) {
+    twitchBot(nodecg);
 };

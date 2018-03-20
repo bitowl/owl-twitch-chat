@@ -31,6 +31,9 @@
       }
     ]
   },
+  "dependencies": {
+    "twitch-bot": "^1.2.5"
+  },
   "repository": "https://github.com/nodecg/nodecg.git",
   "license": "MIT"
 }
