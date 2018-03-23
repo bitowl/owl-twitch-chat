@@ -1,5 +1,6 @@
 <link rel="import" href="../../../bower_components/paper-button/paper-button.html">
 <link rel="import" href="../../../bower_components/nodecg-replicant/nodecg-replicant.html">
+<link rel="import" href="../../../bower_components/iron-icons/iron-icons.html">
 <dom-module id="owl-twitch-messages">
 	<template>
 		<style>
@@ -9,19 +10,45 @@
                 height: 300px;
                 overflow-y: scroll;
             }
-            .message {
-                border-bottom: 1px solid #666;
+            .chat-message {
+                border-bottom: 1px solid #ccc;
+                display: flex;
+                padding-top: 5px;
+                padding-bottom: 5px;
+            }
+            .send-button {
+                min-width: 40px;
+                padding-top: 0px;
+                padding-bottom: 0px;
+            }
+            .leftpart {
+                flex-grow: 1;
+            }
+            .name {
+                font-weight: bold;
+                color: rgb(160, 160, 160);
+                font-size: 14px;
+            }
+            .text {
+                color: #444;
+            }
+            
+            .clear {
+                clear: both; /* FIXME remove this*/
             }
         </style>
         <div id="messages">
             <template is="dom-repeat" items="[[messages]]">
-                <div class="message">
-                    <div class="name">[[item.username]]</div>
-                    <div class="message">[[item.message]]</div>
+                <div class="chat-message">
+                    <div class="leftpart">
+                        <div class="name">[[item.username]]</div>
+                        <div class="text">[[item.message]]</div>
+                    </div>
+                    <paper-button on-tap="highlightMessage" class="send-button"><iron-icon icon="icons:send"></iron-icon></paper-button>
                 </div>
             </template>
         </div>
-        <paper-button on-tap="addMessage">Test message</paper-button>
+        <paper-button on-tap="clearMessages" raised>Clear messages</paper-button>
 	</template>
 
 	<script src="owl-twitch-messages.js"></script>

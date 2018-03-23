@@ -1,0 +1,6 @@
+{
+  "name": "bitowl",
+  "dependencies": {
+    "iron-icons": "^2.1.1"
+  }
+}

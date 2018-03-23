@@ -25,13 +25,12 @@
                 }
             });
         }
-
-        addMessage() {
-            
-            this.unshift('messages', {
-                'username': 'test',
-                'message': 'testestestsetsetsets'
-            });
+        highlightMessage(event) {
+            nodecg.sendMessage('send-message', event.model.item);
+        }
+        clearMessages() {
+            this.set('messages', []);
+            nodecg.sendMessage('clear-messages')
         }
     }
     customElements.define(OwlTwitchMessages.is, OwlTwitchMessages);
