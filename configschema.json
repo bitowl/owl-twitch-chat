@@ -1,18 +1,6 @@
 {
     "type": "object",
     "properties": {
-        "bot_username": {
-            "type": "string",
-            "description": "Username of the bot"
-        },
-        "bot_oauth": {
-            "type": "string",
-            "description": "oAuth token for the bot"
-        },
-        "channel": {
-            "type": "string",
-            "description": "The channel the bot should join to retrieve chat messages"
-        },
         "messagesCount": {
             "type": "number",
             "default": 10,
@@ -20,8 +8,5 @@
         }
     },
     "required": [
-        "bot_username", 
-        "bot_oauth", 
-        "channel"
     ]
 }
