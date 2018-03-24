@@ -1,6 +1,7 @@
 <link rel="import" href="../../../bower_components/paper-button/paper-button.html">
 <link rel="import" href="../../../bower_components/nodecg-replicant/nodecg-replicant.html">
 <link rel="import" href="../../../bower_components/iron-icons/iron-icons.html">
+<link rel="import" href="../../../bower_components/marked-element/marked-element.html">
 <dom-module id="owl-twitch-messages">
 	<template>
 		<style>
@@ -36,13 +37,16 @@
             .clear {
                 clear: both; /* FIXME remove this*/
             }
+            img {
+                vertical-align: middle;
+            }
         </style>
         <div id="messages">
             <template is="dom-repeat" items="[[messages]]">
                 <div class="chat-message">
                     <div class="leftpart">
                         <div class="name">[[item.username]]</div>
-                        <div class="text">[[item.message]]</div>
+                        <marked-element markdown="[[item.message]]"><div slot="markdown-html" class="text"></div></marked-element>
                     </div>
                     <paper-button on-tap="highlightMessage" class="send-button"><iron-icon icon="icons:send"></iron-icon></paper-button>
                 </div>
