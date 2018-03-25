@@ -45,8 +45,8 @@
             <template is="dom-repeat" items="[[messages]]">
                 <div class="chat-message">
                     <div class="leftpart">
-                        <div class="name">[[item.username]]</div>
-                        <marked-element markdown="[[item.message]]"><div slot="markdown-html" class="text"></div></marked-element>
+                        <div class="name">[[item.user]]</div>
+                        <marked-element markdown="[[item.text]]"><div slot="markdown-html" class="text"></div></marked-element>
                     </div>
                     <paper-button on-tap="highlightMessage" class="send-button"><iron-icon icon="icons:send"></iron-icon></paper-button>
                 </div>

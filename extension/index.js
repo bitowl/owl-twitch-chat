@@ -13,11 +13,25 @@ module.exports = function (nodecg) {
     });
 
     twitchBot.on('message', value => {
+
+        console.log('got message', value);
         fetchUserAvatar(value.username, avatar => {
             value.avatar = avatar;
-            storeMessage(value);
+            value.message = convertEmotesToMarkdown(value.message, value.emotes);
+            storeMessage(convertMessageToQuestion(value));
+            
         })
     });
+
+    function convertMessageToQuestion(chatter) {
+        var question = {};
+        question.id = chatter.id;
+        question.platform = 'twitch';
+        question.user = chatter.display_name;
+        question.avatar = chatter.avatar;
+        question.text = chatter.message;
+        return question;
+    }
 
     function storeMessage(chatter) {
         chatMessages.value.unshift(chatter); // Store the messages

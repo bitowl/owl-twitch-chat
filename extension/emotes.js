@@ -14,16 +14,20 @@ module.exports = function() {
                 return;
             }
             var emoteId = parts[0];
-            var range = parts[1];
-            var rangeBeginEnd = range.split('-');
-            var rangeBegin = parseInt(rangeBeginEnd[0]);
-            var rangeEnd = parseInt(rangeBeginEnd[1]);
+            var ocurrences = parts[1].split(',');
 
-            emotesContainer.push({
-                id: emoteId,
-                begin: rangeBegin,
-                end: rangeEnd
+            ocurrences.forEach(occurrence => {
+                var rangeBeginEnd = occurrence.split('-');
+                var rangeBegin = parseInt(rangeBeginEnd[0]);
+                var rangeEnd = parseInt(rangeBeginEnd[1]);
+    
+                emotesContainer.push({
+                    id: emoteId,
+                    begin: rangeBegin,
+                    end: rangeEnd
+                });
             });
+
         });
 
         emotesContainer.sort((a, b) => {
