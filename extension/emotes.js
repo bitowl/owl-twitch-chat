@@ -3,8 +3,9 @@
 module.exports = function() {
 
     function convertEmotesToMarkdown(message, emotes) {
-        console.log('message', message);
-        
+        if (emotes === null) {
+            return message;
+        }
         var emoteArray = emotes.split('/');
         var emotesContainer = [];
 
@@ -50,7 +51,6 @@ module.exports = function() {
             markdown += '![](https://static-cdn.jtvnw.net/emoticons/v1/' + emote.id + '/1.0)';
         }
         markdown += endMessage;
-        console.log(markdown);
         return markdown;
     }
 

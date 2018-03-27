@@ -24,9 +24,15 @@
                     this.pop('messages');
                 }
             });
+            nodecg.listenFor('delete-message', () => {
+                this.clearMessages();
+            });
         }
         highlightMessage(event) {
             nodecg.sendMessageToBundle('add-question', 'owl-question-box', event.model.item);
+        }
+        confirmClearMessages() {
+            nodecg.getDialog('delete-message').open();
         }
         clearMessages() {
             this.set('messages', []);

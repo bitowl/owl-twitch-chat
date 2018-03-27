@@ -29,9 +29,26 @@
       {
         "name": "twitch-chat",
         "title": "Twitch Chat",
-        "width": 2,
+        "width": 3,
         "file": "twitch-chat.html",
         "headerColor": "#4b367c"
+      },
+      {
+        "name": "delete-message",
+        "title": "Clear Messages?",
+        "width": 2,
+        "file": "delete-message.html",
+        "dialog": true,
+        "dialogButtons": [
+          {
+            "name": "Yes",
+            "type": "confirm"
+          },
+          {
+            "name": "No",
+            "type": "dismiss"
+          }
+        ]
       }
     ]
   },

@@ -24,6 +24,7 @@
             }
             .leftpart {
                 flex-grow: 1;
+                overflow: auto;
             }
             .name {
                 font-weight: bold;
@@ -40,6 +41,13 @@
             img {
                 vertical-align: middle;
             }
+            .clearButton {
+                --paper-button: {
+                    background-color: #C9513E;
+                    color: white;
+                    min-width: 50px;
+                }
+            }
         </style>
         <div id="messages">
             <template is="dom-repeat" items="[[messages]]">
@@ -52,7 +60,7 @@
                 </div>
             </template>
         </div>
-        <paper-button on-tap="clearMessages" raised>Clear messages</paper-button>
+        <paper-button on-tap="confirmClearMessages" raised class="clearButton"><iron-icon icon="icons:clear"></iron-icon> &nbsp;Clear messages</paper-button>
 	</template>
 
 	<script src="owl-twitch-messages.js"></script>
