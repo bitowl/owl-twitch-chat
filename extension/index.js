@@ -13,8 +13,6 @@ module.exports = function (nodecg) {
     });
 
     twitchBot.on('message', value => {
-
-        console.log('got message', value);
         fetchUserAvatar(value.username, avatar => {
             value.avatar = avatar;
             value.message = convertEmotesToMarkdown(value.message, value.emotes);
