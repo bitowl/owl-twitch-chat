@@ -7,7 +7,6 @@
         }
 
         ready() {
-            console.log(nodecg.bundleConfig.messagesCount);
             super.ready();
             this.messages = [
                 {
