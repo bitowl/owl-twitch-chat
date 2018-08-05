@@ -2,20 +2,15 @@
 <link rel="import" href="../../../bower_components/nodecg-replicant/nodecg-replicant.html">
 <link rel="import" href="../../../bower_components/iron-icons/iron-icons.html">
 <link rel="import" href="../../../bower_components/marked-element/marked-element.html">
+<link rel="import" href="/bundles/owl-nodecg-styles/dashboard/css/bitowl-theme.html">
 <dom-module id="owl-twitch-messages">
 	<template>
-		<style>
+		<style include="bitowl-theme">
 			:host {
 			}
             #messages {
                 height: 300px;
                 overflow-y: scroll;
-            }
-            .chat-message {
-                border-bottom: 1px solid #ccc;
-                display: flex;
-                padding-top: 5px;
-                padding-bottom: 5px;
             }
             .send-button {
                 min-width: 40px;
@@ -24,15 +19,8 @@
             }
             .leftpart {
                 flex-grow: 1;
-                overflow: auto;
-            }
-            .name {
-                font-weight: bold;
-                color: rgb(160, 160, 160);
-                font-size: 14px;
-            }
-            .text {
-                color: #444;
+                overflow-x: auto;
+                overflow-y: hidden;
             }
             
             .clear {
@@ -41,17 +29,10 @@
             img {
                 vertical-align: middle;
             }
-            .clearButton {
-                --paper-button: {
-                    background-color: #C9513E;
-                    color: white;
-                    min-width: 50px;
-                }
-            }
         </style>
         <div id="messages">
             <template is="dom-repeat" items="[[messages]]">
-                <div class="chat-message">
+                <div class="owl-chat-message">
                     <div class="leftpart">
                         <div class="name">[[item.user]]</div>
                         <marked-element markdown="[[item.text]]"><div slot="markdown-html" class="text"></div></marked-element>
@@ -60,7 +41,9 @@
                 </div>
             </template>
         </div>
-        <paper-button on-tap="confirmClearMessages" raised class="clearButton"><iron-icon icon="icons:clear"></iron-icon> &nbsp;Clear messages</paper-button>
+        <p>
+        <paper-button on-tap="confirmClearMessages" class="nodecg-reject"><iron-icon icon="icons:clear"></iron-icon> &nbsp;Clear messages</paper-button>
+        </p>
 	</template>
 
 	<script src="owl-twitch-messages.js"></script>
