@@ -4,30 +4,39 @@
 <link rel="import" href="../../../bower_components/marked-element/marked-element.html">
 <link rel="import" href="/bundles/owl-nodecg-styles/dashboard/css/bitowl-theme.html">
 <dom-module id="owl-twitch-messages">
-	<template>
-		<style include="bitowl-theme">
-			:host {
-			}
+    <template>
+        <style include="bitowl-theme">
+            :host {}
+
             #messages {
                 height: 300px;
                 overflow-y: scroll;
             }
+
             .send-button {
                 min-width: 40px;
                 padding-top: 0px;
                 padding-bottom: 0px;
             }
+
             .leftpart {
                 flex-grow: 1;
                 overflow-x: auto;
                 overflow-y: hidden;
             }
-            
+
             .clear {
-                clear: both; /* FIXME remove this*/
+                clear: both;
+                /* FIXME remove this*/
             }
+
             img {
                 vertical-align: middle;
+            }
+
+            .viewerlist {
+                height: 100px;
+                overflow-y: auto;
             }
         </style>
         <div id="messages">
@@ -35,16 +44,27 @@
                 <div class="owl-chat-message">
                     <div class="leftpart">
                         <div class="name">[[item.user]]</div>
-                        <marked-element markdown="[[item.text]]"><div slot="markdown-html" class="text"></div></marked-element>
+                        <marked-element markdown="[[item.text]]">
+                            <div slot="markdown-html" class="text"></div>
+                        </marked-element>
                     </div>
-                    <paper-button on-tap="highlightMessage" class="send-button"><iron-icon icon="icons:send"></iron-icon></paper-button>
+                    <paper-button on-tap="highlightMessage" class="send-button">
+                        <iron-icon icon="icons:send"></iron-icon>
+                    </paper-button>
                 </div>
             </template>
         </div>
-        <p>
-        <paper-button on-tap="confirmClearMessages" class="nodecg-reject"><iron-icon icon="icons:clear"></iron-icon> &nbsp;Clear messages</paper-button>
+        <p class="viewerlist">
+            <template is="dom-repeat" items="[[viewers]]" mutable-data>
+                <div>{{item}}</div>
+            </template>
         </p>
-	</template>
+        <p>
+            <paper-button on-tap="confirmClearMessages" class="nodecg-reject">
+                <iron-icon icon="icons:clear"></iron-icon> &nbsp;Clear messages
+            </paper-button>
+        </p>
+    </template>
 
-	<script src="owl-twitch-messages.js"></script>
+    <script src="owl-twitch-messages.js"></script>
 </dom-module>
